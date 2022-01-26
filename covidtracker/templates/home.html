@@ -20,43 +20,43 @@
             <h1 style="margin-bottom:0;font-weight:bold;">
                 <center>District-Wise Data For India </center></h1>
             <div id="table-wrapper">
-                <div id="table-scroll1">
-                    <table class="table table-hover table-primary" id="india">
+                <div >
+                    <table class="table table-primary" id="india">
 
                         <tr>
-                            <table class="table table-hover " id="india">
+                            <table class="table " id="india">
 
                             <tr>
 
                                 <td>
-                                {% for dt in data1 %}
+                                {% for d1,d2 in data1.items %}
                                 <hr>
-                                <center><h1>{{dt.state}}</h1></center>
+                                <center><h1>{{d1}}</h1></center>
                                 <hr>
                                 <div id="table-wrapper">
                                     <div id="table-scroll">
                                         <table class="table table-hover " id="india">
                                             <thead>
                                             <tr style="text-align:center">
-                                                <th scope="col">State</th>
+                                                <th scope="col">District</th>
                                                 <th scope="col" > Total Confirmed</th>
-                                                <th scope="col" class="activ">Active Cases</th>
+<!--                                                <th scope="col" class="activ">Active Cases</th>-->
                                                 <th scope="col" class="activ"> Total Recovered</th>
                                                 <th scope="col" > Total Deaths </th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for dt in dt.districtData %}
+                                            {% for dt1,dt2 in d2.districts.items %}
                                             <tr style="text-align:center">
 
-                                                <td> {{dt.district}}</td>
+                                                <td> {{dt1}}</td>
 
-                                                <td > {{dt.confirmed}} <span > [+{{dt.delta.confirmed}}]</span></td>
-                                                <td class='activ'> {{dt.active}}</td>
+                                                <td > {{dt2.total.confirmed}} </td>
+<!--                                                <td class='activ'> {{dt.active}}</td>-->
 
-                                                <td class='activ'> {{dt.recovered}} <span >[-{{dt.delta.recovered}}]<span></td>
+                                                <td class='activ'> {{dt2.total.recovered}}</td>
 
-                                                <td > {{dt.deceased}} <span >[+{{dt.delta.deceased}}]</span></td>
+                                                <td > {{dt2.total.deceased}} </td>
 
                                             </tr>
                                             {% endfor %}

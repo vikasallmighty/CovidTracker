@@ -1,40 +1,46 @@
 {%extends 'base.html'%}
+
 {% block body %}
+<div class="d-flex justify-content-center">
+    {% load static %}
+    <img src="{% static '1.jpg' %}" alt="My image" style="width:100%; object-fit:cover; height:400px">
+
+</div>
 <div class="container">
-<h1>India : {{date}}</h1>
-<table class="table table-borderless" style="text-align:center">
+<table class="table table-borderless my-5 table-light" style="text-align:center; position: sticky; top: 0">
     <tr>
         <th scope="col" style="color:red">Confirmed<br>
-      <span>{{ind.total.confirmed}}<br>+({{ind.daily.confirmed}})</span></th>
+      <span>{{ss.Total.total.confirmed}}</span></th>
       <th scope="col" style="color:green">Recovered<br>
-      <span >{{ind.total.recovered}}<br>+({{ind.daily.recovered}})</span></th>
+      <span >{{ss.Total.total.recovered}}</span></th>
         <th scope="col" style="color:grey">Deceased<br>
-      <span >{{ind.total.deceased}}<br>+({{ind.daily.deceased}})</span></th>
-        <th scope="col" style="color:blue">Tested<br>
-      <span >{{ind.total.tested}}<br>+({{ind.daily.tested}})</span></th>
+      <span >{{ss.Total.total.deceased}}</span></th>
+        <th scope="col" style="color:blue">Vaccinated<br>
+      <span >{{v}}</span></th>
     </tr>
 </table>
-<h2>State Wise cases in India </h2>
+    <center>
+<h2>State Wise cases in India </h2></center>
 <table class="table my-3 table-borderless " style="text-align:center" >
     <thead class="thead-light">
 
 
-    <tr>
+    <tr style="position: sticky; top: 72px">
         <th>State</th>
         <th >Total Confirmed Cases</th>
         <th>Total Recovered Case</th>
         <th>Total Deaths</th>
-        <th>Total Tested</th>
+<!--        <th>Total Tested</th>-->
     </tr>
     </thead>
 
-    {% for d1 in ss %}
+    {% for d1,d2 in ss.items %}
     <tr>
-        <th>{{d1.state}}</th>
-        <td class="table-danger">{{d1.total.confirmed}}<br> + ({{d1.daily.confirmed}})</td>
-        <td class="table-success">{{d1.total.recovered}}<br> + ({{d1.daily.recovered}})</td>
-        <td class="table-secondary">{{d1.total.deceased}}<br>+ ({{d1.daily.deceased}})</td>
-        <td class="table-info">{{d1.total.tested}}<br>+ ({{d1.daily.tested}})</td>
+        <th class="table-secondary">{{d1}}</th>
+        <td class="table-primary">{{d2.total.confirmed}}</td>
+        <td class="table-success">{{d2.total.recovered}}</td>
+        <td class="table-danger">{{d2.total.deceased}}</td>
+<!--        <td class="table-info">{{d1.total.tested}}<br>+ ({{d1.daily.tested}})</td>-->
     </tr>
     {% endfor %}
 
