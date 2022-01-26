@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn manage.py:runserver
+web: gunicorn covidindia.wsgi
